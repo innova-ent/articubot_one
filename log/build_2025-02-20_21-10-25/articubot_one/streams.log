@@ -1,0 +1,89 @@
+[0.015s] Invoking command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ryan/dev_ws/src/articubot_one -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ryan/dev_ws/src/articubot_one/install/articubot_one
+[0.148s] -- The C compiler identification is GNU 11.4.0
+[0.294s] -- The CXX compiler identification is GNU 11.4.0
+[0.318s] -- Detecting C compiler ABI info
+[0.426s] -- Detecting C compiler ABI info - done
+[0.436s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.437s] -- Detecting C compile features
+[0.437s] -- Detecting C compile features - done
+[0.442s] -- Detecting CXX compiler ABI info
+[0.560s] -- Detecting CXX compiler ABI info - done
+[0.572s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.573s] -- Detecting CXX compile features
+[0.574s] -- Detecting CXX compile features - done
+[0.585s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.756s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.834s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.878s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.009s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.024s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.024s] -- Configured cppcheck include dirs: 
+[1.024s] -- Configured cppcheck exclude dirs and/or files: 
+[1.039s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.039s] -- Configured cpplint exclude dirs and/or files: 
+[1.041s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.046s] -- Added test 'lint_cmake' to check CMake code style
+[1.048s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.063s] -- Added test 'uncrustify' to check C / C++ code style
+[1.063s] -- Configured uncrustify additional arguments: 
+[1.066s] -- Added test 'xmllint' to check XML markup files
+[1.068s] -- Configuring done
+[1.073s] -- Generating done
+[1.076s] -- Build files have been written to: /home/ryan/dev_ws/src/articubot_one/build/articubot_one
+[1.084s] Invoked command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ryan/dev_ws/src/articubot_one -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ryan/dev_ws/src/articubot_one/install/articubot_one
+[1.085s] Invoking command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ryan/dev_ws/src/articubot_one/build/articubot_one -- -j8 -l8
+[1.145s] Invoked command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ryan/dev_ws/src/articubot_one/build/articubot_one -- -j8 -l8
+[1.157s] Invoking command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/ryan/dev_ws/src/articubot_one/build/articubot_one
+[1.164s] -- Install configuration: ""
+[1.165s] -- Execute custom install script
+[1.165s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/ball_tracker_params_robot.yaml
+[1.176s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/ball_tracker_params_sim.yaml
+[1.186s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/drive_bot.rviz
+[1.196s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/empty.yaml
+[1.207s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/gaz_ros2_ctl_use_sim.yaml
+[1.218s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/gazebo_params.yaml
+[1.230s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/joystick.yaml
+[1.241s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/main.rviz
+[1.252s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/map.rviz
+[1.262s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/mapper_params_online_async.yaml
+[1.272s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/my_controllers.yaml
+[1.282s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/nav2_params.yaml
+[1.293s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/twist_mux.yaml
+[1.303s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/config/view_bot.rviz
+[1.314s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/camera.xacro
+[1.327s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/depth_camera.xacro
+[1.339s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/face.xacro
+[1.349s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/gazebo_control.xacro
+[1.360s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/inertial_macros.xacro
+[1.370s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/lidar.xacro
+[1.381s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/robot.urdf.xacro
+[1.398s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/robot_core.xacro
+[1.408s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/description/ros2_control.xacro
+[1.419s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/ball_tracker.launch.py
+[1.430s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/camera.launch.py
+[1.441s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/joystick.launch.py
+[1.459s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/launch_robot.launch.py
+[1.471s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/launch_sim.launch.py
+[1.483s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/localization_launch.py
+[1.495s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/navigation_launch.py
+[1.506s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/online_async_launch.py
+[1.517s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/rplidar.launch.py
+[1.530s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/launch/rsp.launch.py
+[1.550s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/worlds/empty.world
+[1.560s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/worlds/obstacles.world
+[1.571s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/ament_index/resource_index/package_run_dependencies/articubot_one
+[1.581s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/ament_index/resource_index/parent_prefix_path/articubot_one
+[1.591s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/environment/ament_prefix_path.sh
+[1.602s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/environment/ament_prefix_path.dsv
+[1.612s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/environment/path.sh
+[1.623s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/environment/path.dsv
+[1.636s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/local_setup.bash
+[1.647s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/local_setup.sh
+[1.658s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/local_setup.zsh
+[1.669s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/local_setup.dsv
+[1.680s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/package.dsv
+[1.691s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/ament_index/resource_index/packages/articubot_one
+[1.703s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/cmake/articubot_oneConfig.cmake
+[1.715s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/cmake/articubot_oneConfig-version.cmake
+[1.726s] -- Symlinking: /home/ryan/dev_ws/src/articubot_one/install/articubot_one/share/articubot_one/package.xml
+[1.743s] Invoked command in '/home/ryan/dev_ws/src/articubot_one/build/articubot_one' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/ryan/dev_ws/src/articubot_one/build/articubot_one
