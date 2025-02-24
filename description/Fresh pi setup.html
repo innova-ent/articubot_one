@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articubot One Fresh Install Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Articubot One Fresh Install Guide</h1>
+    <p>Coles Notes for setting up ROS 2 Humble and Articubot on a Raspberry Pi with Ubuntu Server 22.04.</p>
+
+    <h2>1. Base Setup</h2>
+    <p><strong>OS:</strong> Ubuntu Server 22.04 (64-bit) via Raspberry Pi Imager.</p>
+    <p><strong>Pre-Configure SSD:</strong></p>
+    <ul>
+        <li>Enable SSH: <code>touch /mnt/pi_boot/ssh</code></li>
+        <li>WiFi: <code>nano /mnt/pi_boot/wpa_supplicant.conf</code></li>
+    </ul>
+    <pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+network={
+    ssid="IEWshop"
+    psk="innovation"
+    key_mgmt=WPA-PSK
+}</code></pre>
+    <p>Boot Pi, find IP: <code>arp -a</code> from dev machine.</p>
+
+    <h2>2. Initial Config</h2>
+    <p><strong>SSH In:</strong> <code>ssh ryan@&lt;pi_ip&gt;</code></p>
+    <p><strong>Update & User:</strong></p>
+    <pre><code>sudo apt update && sudo apt upgrade -y
+sudo usermod -a -G dialout ryan</code></pre>
+    <p><strong>Static IP:</strong> <code>sudo nano /etc/netplan/01-netcfg.yaml</code></p>
+    <pre><code>network:
+  version: 2
+  renderer: networkd
+  wifis:
+    wlan0:
+      dhcp4: false
+      addresses: [192.168.1.15/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      access-points:
+        "IEWshop":
+          password: "innovation"
+      routes:
+        - to: default
+          via: 192.168.1.1</code></pre>
+    <p>Apply: <code>sudo netplan apply</code></p>
+
+    <h2>3. Install ROS 2 Humble</h2>
+    <p><strong>Setup:</strong></p>
+    <pre><code>sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+sudo apt install -y software-properties-common curl gnupg
+sudo add-apt-repository universe
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/ros2.list
+sudo apt update
+sudo apt install -y ros-humble-ros-base ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-xacro ros-humble-twist-mux ros-humble-joy ros-humble-teleop-twist-joy ros-humble-diff-drive-controller libserial-dev
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+rosdep init
+rosdep update</code></pre>
+
+    <h2>4. Setup Workspace</h2>
+    <p><strong>Clone Repos:</strong></p>
+    <pre><code>mkdir -p ~/robot_ws/src
+cd ~/robot_ws/src
+git clone https://github.com/innova-ent/articubot_one.git -b humble
+git clone https://github.com/joshnewans/diffdrive_arduino.git -b humble</code></pre>
+    <p><strong>Build:</strong></p>
+    <pre><code>cd ~/robot_ws
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug
+source install/setup.bash</code></pre>
+
+    <h2>5. Configure and Launch</h2>
+    <p><strong>Check USB:</strong> <code>/dev/ttyUSB0</code>—plug in Arduino, verify:</p>
+    <pre><code>ls -l /dev/ttyUSB0</code></pre>
+    <p><strong>Launch Script:</strong> <code>nano ~/robot_ws/launch_robot.sh</code></p>
+    <pre><code>#!/bin/bash
+source /opt/ros/humble/setup.bash
+source ~/robot_ws/install/setup.bash
+[ ! -e /dev/ttyUSB0 ] && { echo "Error: /dev/ttyUSB0 not found"; exit 1; }
+sudo chmod 666 /dev/ttyUSB0
+ros2 launch articubot_one launch_robot.launch.py</code></pre>
+    <p>Make executable: <code>chmod +x ~/robot_ws/launch_robot.sh</code></p>
+    <p><strong>Run:</strong> <code>~/robot_ws/launch_robot.sh</code></p>
+
+    <h2>6. Dev Machine (Optional)</h2>
+    <p><strong>Sync:</strong> <code>git pull origin humble</code> in <code>~/dev_ws/src/articubot_one</code></p>
+    <p><strong>Launch:</strong> <code>ros2 launch articubot_one joystick.launch.py</code></p>
+
+    <h2>Backup SSD for More Pis</h2>
+    <p><strong>Backup:</strong></p>
+    <ul>
+        <li>Power off Pi, remove SSD.</li>
+        <li>On dev machine: <code>sudo dd if=/dev/sdb of=~/articubot_pi.img bs=4M status=progress</code></li>
+    </ul>
+    <p><strong>Clone:</strong></p>
+    <ul>
+        <li>Insert new SSD: <code>sudo dd if=~/articubot_pi.img of=/dev/sdX bs=4M status=progress</code></li>
+        <li>Boot, update IP: <code>sudo nano /etc/netplan/01-netcfg.yaml</code>, then <code>sudo netplan apply</code></li>
+    </ul>
+
+    <p><em>Created: February 21, 2025 | Ryan & Grok 3 (xAI)</em></p>
+</body>
+</html>
